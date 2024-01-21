@@ -12,9 +12,9 @@ public class GameOfLife {
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
 		//test1(fileName);
-		test2(fileName);
+		//test2(fileName);
 		//test3(fileName, 3);
-		//// play(fileName);
+		play(fileName);
 	}
 	
 	// Reads the data file and prints the initial board.
@@ -29,9 +29,9 @@ public class GameOfLife {
 		int[][] board = read(fileName);
 	
 
-		System.out.print("the current value of this cell is "); System.out.printf("%2d ", board[2][4]);
-		System.out.println("the count of living cells arond this one is " +count(board, 2, 4));
-		System.out.println("the next value of this element is "+cellValue(board, 2, 4));
+		System.out.print("the current value of this cell is "); System.out.printf("%2d ", board[3][2]);
+		System.out.println("the count of living cells arond this one is " +count(board, 3, 2));
+		System.out.println("the next value of this element is "+cellValue(board, 3, 2));
 
 
 		}
@@ -86,8 +86,8 @@ public class GameOfLife {
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
 		int [][] newboard = new int [board.length][board[0].length];
-		for (int i=1; i<board.length-2; i++){
-			for (int j=1; j<board[i].length-2;j++){
+		for (int i=1; i<board.length-1; i++){
+			for (int j=1; j<board[i].length-1;j++){
 			newboard [i][j] = cellValue(board, i, j);
 			} 
 		}
@@ -105,19 +105,20 @@ public class GameOfLife {
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	public static int cellValue(int[][] board, int i, int j) {
 		int aliveneig = count(board, i, j);
+		int finalValue = 0;
 		if (board[i][j] == 1 && aliveneig < 2){
-				board[i][j] = 0;
+				finalValue = 0;
 		}
 		if ( board[i][j] == 1 && aliveneig > 3){
-				board[i][j] = 0;
+				finalValue = 0;
 			}
 		if (board[i][j] == 1 && aliveneig <= 3 && aliveneig >= 2){
-				board[i][j] = 1;
+				finalValue = 1;
 			}
 		if (board [i][j] == 0 && aliveneig == 3){
-				board [i][j] = 1;
+				finalValue = 1;
 		}
-		return board[i][j];
+		return finalValue;
 	}
 	
 	// Counts and returns the number of living neighbors of the given cell
