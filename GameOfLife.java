@@ -87,7 +87,7 @@ public class GameOfLife {
 	public static int[][] evolve(int[][] board) {
 		int [][] newboard = new int [board.length][board[0].length];
 		for (int i=1; i<board.length-2; i++){
-			for (int j=1; j<board[i].length-1;j++){
+			for (int j=1; j<board[i].length-2;j++){
 			newboard [i][j] = cellValue(board, i, j);
 			} 
 		}
