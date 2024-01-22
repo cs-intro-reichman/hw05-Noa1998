@@ -86,7 +86,7 @@ public class GameOfLife {
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
 		int [][] newboard = new int [board.length][board[0].length];
-		for (int i=1; i<board.length-1; i++){
+		for (int i=1; i<board.length-2; i++){
 			for (int j=1; j<board[i].length-1;j++){
 			newboard [i][j] = cellValue(board, i, j);
 			} 
@@ -152,7 +152,7 @@ public class GameOfLife {
     public static void print(int[][] arr) {
 		for (int i=1; i<arr.length-1; i++){
 			for (int k=1; k<arr[0].length-1; k++){
-				System.out.printf("%2d ", arr[i][k]);
+				System.out.printf("%3d ", arr[i][k]);
 			}System.out.println();
 		} 
 	}
